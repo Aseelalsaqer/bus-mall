@@ -1,0 +1,90 @@
+
+h2{ 
+    margin: 40px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.hFlex {
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-evenly;
+}
+
+.vFlex {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+.result{
+    width: 25%;
+}
+.item {
+    /* height: 150px; */
+    text-align: center;
+    align-content: center;
+    flex: 1 auto;
+}
+
+.item img {
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    align-self: baseline;
+    padding: 20px;
+}
+
+.top-links a:visited, .top-links a{
+    color: black;
+    padding: 10px;
+}
+
+h3 {
+    padding-left: 15px;
+    padding-top: 5px;
+    height: 25px;
+    color: rgb(30, 40, 49);
+}
+p {
+   
+    margin-left: 30px;
+    margin-right: 10px;
+    
+}
+footer {
+    text-align: center;
+    background-color: slategray;
+    color: snow;
+    height: 30px;
+    padding-top: 10px;
+}
+
+
+#logoImg{
+    width: 120px;
+}
+.header
+{
+    display: inline-flex;
+    text-align: left;
+    align-content: flex-start;
+    margin: 15px;
+}
+.header h1{
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+.a{
+    width: 300px;
+    padding:20px;
+}
+
+.space{
+    height: 20px;
+}
