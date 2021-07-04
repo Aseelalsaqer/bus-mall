@@ -1,4 +1,5 @@
 
+
 h2{ 
     margin: 40px;
 }
@@ -8,12 +9,20 @@ body {
     padding: 0;
 }
 
+.hFlex3{
+    display: flex;
+    flex-flow: nowrap;
+    justify-content: space-evenly;
+    
 
+}
 
 .hFlex {
     display: flex;
     flex-flow: nowrap;
     justify-content: space-evenly;
+    border-style: solid;
+    
 }
 
 .vFlex {
@@ -21,14 +30,28 @@ body {
     flex-flow: column wrap;
     justify-content: space-between;
 }
+.hFlex2{
+    text-align: center;
+    font-size: xx-large;
+    border-style: solid;
+   
+}
 .result{
-    width: 25%;
+    width: 100%;
+    border-style: solid;
 }
 .item {
     /* height: 150px; */
-    text-align: center;
-    align-content: center;
-    flex: 1 auto;
+    
+    margin-left: 60px;
+    
+}
+.item2{
+    text-align: left;
+    margin-left: 60px;
+    /* margin-right: 80px; */
+    border-style: solid;
+
 }
 
 .item img {
@@ -39,34 +62,19 @@ body {
     padding: 20px;
 }
 
-.top-links a:visited, .top-links a{
-    color: black;
-    padding: 10px;
-}
 
-h3 {
-    padding-left: 15px;
-    padding-top: 5px;
-    height: 25px;
-    color: rgb(30, 40, 49);
-}
+
+
 p {
    
     margin-left: 30px;
     margin-right: 10px;
     
 }
-footer {
-    text-align: center;
-    background-color: slategray;
-    color: snow;
-    height: 30px;
-    padding-top: 10px;
-}
-
 
 #logoImg{
-    width: 120px;
+    width: 140px;
+    height: 80px;
 }
 .header
 {
@@ -74,6 +82,7 @@ footer {
     text-align: left;
     align-content: flex-start;
     margin: 15px;
+    
 }
 .header h1{
     padding-top: 5px;
@@ -83,8 +92,12 @@ footer {
 .a{
     width: 300px;
     padding:20px;
+    height: 300px;
 }
 
 .space{
     height: 20px;
+}
+.container{
+    border-style: solid;
 }
