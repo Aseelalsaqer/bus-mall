@@ -91,8 +91,9 @@ p {
 
 .a{
     width: 300px;
-    padding:20px;
+  
     height: 300px;
+    border-style: solid;
 }
 
 .space{
