@@ -3,8 +3,13 @@ let leftImageElement = document.getElementById('left-image');
 let middleImageElement = document.getElementById('middle-image');
 let rightImageElement = document.getElementById('right-image');
 
-const maxAttempts = 25;
+const maxAttempts = 3;
 let counter = 0;
+let arrOfNames = [];
+let arrOfVotes = [];
+let currentData = [];
+let arrOfViews = [];
+
 var Products = function (name, source) {
 
     this.name = name;
@@ -12,6 +17,8 @@ var Products = function (name, source) {
     this.votes = 0;
     this.views = 0;
     Products.globArr.push(this);
+    arrOfNames.push(this.name);
+
 }
 
 Products.globArr = [];
@@ -46,18 +53,27 @@ function renderThreeImages() {
     middleIndex = generateRandomIndex();
     rightIndex = generateRandomIndex();
 
-    while ((leftIndex === middleIndex) || (leftIndex === rightIndex) || (middleIndex === rightIndex)) {
-        (leftIndex = generateRandomIndex()) && (rightIndex = generateRandomIndex());
-
+    while ((leftIndex === middleIndex) || (leftIndex === rightIndex) || (middleIndex === rightIndex) || currentData.includes(leftIndex) || currentData.includes(middleIndex) || currentData.includes(rightIndex)) {
+        leftIndex = generateRandomIndex();
+        middleIndex = generateRandomIndex();
+        rightIndex = generateRandomIndex();
     }
+    currentData = [leftIndex, middleIndex, rightIndex];
+    // console.log(currentData);
+    // while () {
+    //     leftIndex = generateRandomIndex();
+    //     middleIndex = generateRandomIndex();
+    //     rightIndex = generateRandomIndex();
 
-
+    // } 
+    // currentData = [leftIndex , middleIndex , rightIndex];
+    // console.log(currentData);
 
     leftImageElement.src = Products.globArr[leftIndex].source;
     middleImageElement.src = Products.globArr[middleIndex].source;
     rightImageElement.src = Products.globArr[rightIndex].source;
 
-    Products.globArr[leftIndex].views++ ;
+    Products.globArr[leftIndex].views++;
     Products.globArr[middleIndex].views++;
     Products.globArr[rightIndex].views++;
 
@@ -66,6 +82,9 @@ function renderThreeImages() {
 
 }
 renderThreeImages();
+
+
+
 
 leftImageElement.addEventListener('click', handleClick);
 middleImageElement.addEventListener('click', handleClick);
@@ -90,6 +109,7 @@ function handleClick(event) {
         console.log(event.target.id);
     } else {
         renderList();
+        gettingCharts();
     }
 
 
@@ -100,6 +120,7 @@ function generateRandomIndex() {
     return Math.floor(Math.random() * Products.globArr.length)
 }
 generateRandomIndex();
+
 function renderList() {
 
     const ul = document.getElementById('unList');
@@ -107,6 +128,12 @@ function renderList() {
 
     for (let i = 0; i < Products.globArr.length; i++) {
         let li = document.createElement('li');
+        arrOfVotes.push(Products.globArr[i].votes);
+        arrOfViews.push(Products.globArr[i].views);
+
+
+
+
         ul.appendChild(li);
         // let b = document.getElementById('qq');
         // b.appendChild(ul);
@@ -116,4 +143,38 @@ function renderList() {
     leftImageElement.removeEventListener('click', handleClick);
     middleImageElement.removeEventListener('click', handleClick);
     rightImageElement.removeEventListener('click', handleClick);
+}
+
+function gettingCharts() {
+    let ctx = document.getElementById('myChart');
+    let myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: arrOfNames,
+            datasets: [{
+                label: '# of Votes',
+                data: arrOfVotes,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }, {
+                label: '# of Views',
+                data: arrOfViews,
+                backgroundColor: [
+                    'rgba(207, 79, 100, 1)',
+                ],
+                borderColor: [
+                    'rgba(100, 10, 12, 1)',
+                ],
+                borderWidth: 1
+
+            }
+            ]
+        },
+
+    });
 }
