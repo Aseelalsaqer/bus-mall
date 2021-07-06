@@ -111,7 +111,7 @@ function handleClick(event) {
     } else {
         const b = document.getElementById('qq');
         b.addEventListener('click', handleResult);
-        section.removeEventListener('click',handleClick)
+        section.removeEventListener('click',handleResult)
 
       
     }
