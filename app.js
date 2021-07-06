@@ -3,7 +3,7 @@ let leftImageElement = document.getElementById('left-image');
 let middleImageElement = document.getElementById('middle-image');
 let rightImageElement = document.getElementById('right-image');
 
-const maxAttempts = 25;
+const maxAttempts = 2;
 let counter = 0;
 let arrOfNames = [];
 let arrOfVotes = [];
@@ -18,8 +18,11 @@ var Products = function (name, source) {
     this.views = 0;
     Products.globArr.push(this);
     arrOfNames.push(this.name);
+    saveProducts();
 
 }
+
+
 
 Products.globArr = [];
 
@@ -111,7 +114,7 @@ function handleClick(event) {
     } else {
         const b = document.getElementById('qq');
         b.addEventListener('click', handleResult);
-        section.removeEventListener('click',handleClick)
+        // section.removeEventListener('click',handleClick)
 
       
     }
@@ -120,8 +123,10 @@ function handleClick(event) {
 
 }
 function handleResult(){
+    // getProducts();
     renderList();
     gettingCharts();
+    saveProducts();
 }
 
 function generateRandomIndex() {
@@ -184,3 +189,20 @@ function gettingCharts() {
 
     });
 }
+function saveProducts(){
+    const convertedArr = JSON.stringify(Products.globArr);
+    localStorage.setItem('Statistics', convertedArr);
+  
+  }
+  
+  function getProducts (){
+      const data = localStorage.getItem('Statistics');
+      
+      console.log(data);
+      const parsedProduct = JSON.parse(data);
+     console.log(parsedProduct);
+      Products.globArr = parsedProduct;
+      
+      
+   renderList();
+  }
