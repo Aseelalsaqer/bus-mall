@@ -3,7 +3,7 @@ let leftImageElement = document.getElementById('left-image');
 let middleImageElement = document.getElementById('middle-image');
 let rightImageElement = document.getElementById('right-image');
 
-const maxAttempts = 2;
+const maxAttempts = 25;
 let counter = 0;
 let arrOfNames = [];
 let arrOfVotes = [];
@@ -18,7 +18,7 @@ var Products = function (name, source) {
     this.views = 0;
     Products.globArr.push(this);
     arrOfNames.push(this.name);
-    saveProducts();
+    
 
 }
 
