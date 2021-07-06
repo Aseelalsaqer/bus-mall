@@ -90,6 +90,7 @@ leftImageElement.addEventListener('click', handleClick);
 middleImageElement.addEventListener('click', handleClick);
 rightImageElement.addEventListener('click', handleClick);
 
+let b;
 function handleClick(event) {
 
     counter++;
@@ -108,12 +109,19 @@ function handleClick(event) {
 
         console.log(event.target.id);
     } else {
-        renderList();
-        gettingCharts();
+        const b = document.getElementById('qq');
+        b.addEventListener('click', handleResult);
+        section.removeEventListener('click',handleClick)
+
+      
     }
 
 
 
+}
+function handleResult(){
+    renderList();
+    gettingCharts();
 }
 
 function generateRandomIndex() {
@@ -135,9 +143,7 @@ function renderList() {
 
 
         ul.appendChild(li);
-        // let b = document.getElementById('qq');
-        // b.appendChild(ul);
-        // b.addEventListener('click', renderList);
+      
         li.textContent = `${Products.globArr[i].name} got ${Products.globArr[i].votes} votes and have ${Products.globArr[i].views} views}`
     }
     leftImageElement.removeEventListener('click', handleClick);
