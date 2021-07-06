@@ -3,7 +3,7 @@ let leftImageElement = document.getElementById('left-image');
 let middleImageElement = document.getElementById('middle-image');
 let rightImageElement = document.getElementById('right-image');
 
-const maxAttempts = 3;
+const maxAttempts = 25;
 let counter = 0;
 let arrOfNames = [];
 let arrOfVotes = [];
@@ -111,7 +111,7 @@ function handleClick(event) {
     } else {
         const b = document.getElementById('qq');
         b.addEventListener('click', handleResult);
-        section.removeEventListener('click',handleResult)
+        section.removeEventListener('click',handleClick)
 
       
     }
