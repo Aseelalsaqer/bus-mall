@@ -19,6 +19,7 @@ var Products = function (name, source) {
     Products.globArr.push(this);
     arrOfNames.push(this.name);
     
+    
 
 }
 
@@ -109,7 +110,7 @@ function handleClick(event) {
             Products.globArr[rightIndex].votes++;
         }
         renderThreeImages();
-
+        saveProducts();
         console.log(event.target.id);
     } else {
         const b = document.getElementById('qq');
@@ -126,7 +127,7 @@ function handleResult(){
     // getProducts();
     renderList();
     gettingCharts();
-    saveProducts();
+    
 }
 
 function generateRandomIndex() {
@@ -201,8 +202,10 @@ function saveProducts(){
       console.log(data);
       const parsedProduct = JSON.parse(data);
      console.log(parsedProduct);
+     if (data != null) {
       Products.globArr = parsedProduct;
       
-      
-   renderList();
+     }
+  
   }
+  getProducts();
