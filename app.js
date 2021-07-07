@@ -3,7 +3,7 @@ let leftImageElement = document.getElementById('left-image');
 let middleImageElement = document.getElementById('middle-image');
 let rightImageElement = document.getElementById('right-image');
 
-const maxAttempts = 2;
+const maxAttempts = 25;
 let counter = 0;
 let arrOfNames = [];
 let arrOfVotes = [];
@@ -18,7 +18,8 @@ var Products = function (name, source) {
     this.views = 0;
     Products.globArr.push(this);
     arrOfNames.push(this.name);
-    saveProducts();
+    
+    
 
 }
 
@@ -109,7 +110,7 @@ function handleClick(event) {
             Products.globArr[rightIndex].votes++;
         }
         renderThreeImages();
-
+        saveProducts();
         console.log(event.target.id);
     } else {
         const b = document.getElementById('qq');
@@ -126,7 +127,7 @@ function handleResult(){
     // getProducts();
     renderList();
     gettingCharts();
-    saveProducts();
+    
 }
 
 function generateRandomIndex() {
@@ -201,8 +202,10 @@ function saveProducts(){
       console.log(data);
       const parsedProduct = JSON.parse(data);
      console.log(parsedProduct);
+     if (data != null) {
       Products.globArr = parsedProduct;
       
-      
-   renderList();
+     }
+  
   }
+  getProducts();
